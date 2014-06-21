@@ -20,6 +20,10 @@
 		C1518FC819412EDD00AFC93D /* save_note.png in Resources */ = {isa = PBXBuildFile; fileRef = C1518FC719412EDD00AFC93D /* save_note.png */; };
 		C1518FCA19415FFE00AFC93D /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = C1518FC919415FFE00AFC93D /* separator.png */; };
 		C1518FCD19420D4600AFC93D /* FooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1518FCC19420D4600AFC93D /* FooterCell.m */; };
+		C1569A061955D599007CF9FE /* delete_confirm_cancel_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1569A031955D599007CF9FE /* delete_confirm_cancel_button.png */; };
+		C1569A071955D599007CF9FE /* delete_confirm_delete_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1569A041955D599007CF9FE /* delete_confirm_delete_button.png */; };
+		C1569A081955D599007CF9FE /* delete_confirm_view.png in Resources */ = {isa = PBXBuildFile; fileRef = C1569A051955D599007CF9FE /* delete_confirm_view.png */; };
+		C1569A0B1955DBC4007CF9FE /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = C1569A0A1955DBC4007CF9FE /* MKiCloudSync.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,12 @@
 		C1518FC919415FFE00AFC93D /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
 		C1518FCB19420D4600AFC93D /* FooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterCell.h; sourceTree = "<group>"; };
 		C1518FCC19420D4600AFC93D /* FooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterCell.m; sourceTree = "<group>"; };
+		C1569A031955D599007CF9FE /* delete_confirm_cancel_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_confirm_cancel_button.png; sourceTree = "<group>"; };
+		C1569A041955D599007CF9FE /* delete_confirm_delete_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_confirm_delete_button.png; sourceTree = "<group>"; };
+		C1569A051955D599007CF9FE /* delete_confirm_view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_confirm_view.png; sourceTree = "<group>"; };
+		C1569A091955DBC4007CF9FE /* MKiCloudSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKiCloudSync.h; sourceTree = "<group>"; };
+		C1569A0A1955DBC4007CF9FE /* MKiCloudSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKiCloudSync.m; sourceTree = "<group>"; };
+		C163D8621955DD6F00A35276 /* Skriva.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Skriva.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,12 @@
 		C1518F981941253E00AFC93D /* Skriva */ = {
 			isa = PBXGroup;
 			children = (
+				C163D8621955DD6F00A35276 /* Skriva.entitlements */,
+				C1569A091955DBC4007CF9FE /* MKiCloudSync.h */,
+				C1569A0A1955DBC4007CF9FE /* MKiCloudSync.m */,
+				C1569A031955D599007CF9FE /* delete_confirm_cancel_button.png */,
+				C1569A041955D599007CF9FE /* delete_confirm_delete_button.png */,
+				C1569A051955D599007CF9FE /* delete_confirm_view.png */,
 				C1518FC919415FFE00AFC93D /* separator.png */,
 				C1518FC719412EDD00AFC93D /* save_note.png */,
 				C1518FC519412ED600AFC93D /* delete_note.png */,
@@ -194,6 +210,12 @@
 				TargetAttributes = {
 					C1518F951941253E00AFC93D = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = PUQN3BCXBB;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					C1518FAB1941253E00AFC93D = {
 						CreatedOnToolsVersion = 6.0;
@@ -228,7 +250,10 @@
 				C1518FCA19415FFE00AFC93D /* separator.png in Resources */,
 				C1518FC819412EDD00AFC93D /* save_note.png in Resources */,
 				C1518FA51941253E00AFC93D /* Main.storyboard in Resources */,
+				C1569A071955D599007CF9FE /* delete_confirm_delete_button.png in Resources */,
+				C1569A081955D599007CF9FE /* delete_confirm_view.png in Resources */,
 				C1518FA71941253E00AFC93D /* Images.xcassets in Resources */,
+				C1569A061955D599007CF9FE /* delete_confirm_cancel_button.png in Resources */,
 				C1518FC619412ED600AFC93D /* delete_note.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +278,7 @@
 				C1518F9F1941253E00AFC93D /* AppDelegate.m in Sources */,
 				C1518FBE194125F400AFC93D /* CustomCell.m in Sources */,
 				C1518FC4194126FA00AFC93D /* NoteViewController.m in Sources */,
+				C1569A0B1955DBC4007CF9FE /* MKiCloudSync.m in Sources */,
 				C1518F9C1941253E00AFC93D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,10 +394,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Skriva/Skriva.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Skriva/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -380,10 +410,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Skriva/Skriva.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Skriva/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

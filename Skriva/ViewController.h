@@ -10,6 +10,7 @@
 #import "NoteViewController.h"
 #import "CustomCell.h"
 #import "FooterCell.h"
+#import "MKiCloudSync.h"
 @interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) UITableView* tableView;

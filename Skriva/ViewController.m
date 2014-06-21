@@ -16,6 +16,7 @@
 @implementation ViewController
 @synthesize tableView, addButton;
 - (void)viewDidLoad {
+    [MKiCloudSync start];
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-80, self.view.frame.size.width, 80)];
@@ -25,13 +26,14 @@
     addButton.titleLabel.textColor = [UIColor colorWithWhite:0.91f alpha:1.0f];
     [addButton addTarget:self action:@selector(newNote) forControlEvents:UIControlEventTouchUpInside];
     
+    
     tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, 320, self.view.frame.size.height-20-80)];
     [tableView setDelegate:self];
     [tableView setDataSource:self];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [tableView reloadData];
     [self.view addSubview:tableView];
-    tableView.allowsMultipleSelectionDuringEditing = NO;
+    tableView.allowsMultipleSelectionDuringEditing = YES;
     [self.view addSubview:addButton];
     self.automaticallyAdjustsScrollViewInsets = false;
 }
@@ -49,11 +51,6 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleDelete;
-}
-
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return false;
 }
 
 
@@ -83,6 +80,18 @@
     CustomCell* cell = [[CustomCell alloc] initWithNote:noteForCell];
 //    cell.backgroundColor = [UIColor colorWithWhite:.82 alpha:1.0];
     return cell;
+}
+- (void)tableView:(UITableView *)tv commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSArray* notes = [self getNotes];
+        NSMutableArray* notesMutable = [notes mutableCopy];
+        [notesMutable removeObjectAtIndex:indexPath.row];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithArray:notesMutable] forKey:@"notes"];
+        [tableView beginUpdates];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView endUpdates];
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,6 +133,7 @@
     if (![dataRepresentingSavedArray isEqual:nil])
     {
         NSArray *oldSavedArray = [NSKeyedUnarchiver unarchiveObjectWithData:dataRepresentingSavedArray];
+        NSLog(@"Old saved array : %@", oldSavedArray);
         if (oldSavedArray == nil)
         {
             [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[[NSMutableArray alloc] init]] forKey:@"notes"];

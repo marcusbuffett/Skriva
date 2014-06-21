@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "Note.h"
 @interface NoteViewController : UIViewController <UITextViewDelegate>
 
@@ -14,9 +15,12 @@
 @property(nonatomic, assign) int noteIndex;
 @property(nonatomic, retain) UIButton* saveNote;
 @property(nonatomic, retain) UIButton* deleteNote;
+@property(nonatomic, retain) UIView* backgroundConfirm;
 
 -(void)save;
 -(void)deleteN;
+-(void)confirmDelete;
+-(void)dismissConfirm;
 -(NSArray*)getNotes;
 - (void)scrollToCaretInTextView:(UITextView *)textView animated:(BOOL)animated;
 
